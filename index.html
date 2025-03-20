@@ -1,0 +1,331 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+    :root {
+      --main-color: #0f0;
+      --bg-color: #000;
+      --text-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);
+      --header-size: clamp(1.5rem, 5vw, 3rem);
+      --glitch-size: clamp(1.2rem, 4vw, 2.5rem);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--main-color);
+      font-family: 'Courier New', monospace;
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 2rem;
+      padding: 2rem;
+      line-height: 1.4;
+    }
+
+    .hacker-text {
+      font-size: var(--header-size);
+      text-align: center;
+      word-wrap: break-word;
+      overflow-wrap: anywhere;
+      padding: 1rem;
+      text-transform: uppercase;
+    }
+
+    .glitch-text {
+      font-size: var(--glitch-size);
+      animation: glitch 1s infinite;
+      text-align: center;
+      position: relative;
+    }
+
+    @keyframes glitch {
+      0%, 100% { 
+        text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff;
+        transform: translate(0);
+      }
+      25% { transform: translate(2px, -2px); }
+      50% { transform: translate(-2px, 2px); }
+      75% { transform: translate(3px, -3px); }
+    }
+
+    .hacker-select {
+      background: var(--bg-color);
+      color: var(--main-color);
+      border: 2px solid var(--main-color);
+      padding: 0.8rem;
+      width: min(100%, 400px);
+      margin: 0 auto;
+      font-size: var(--text-size);
+      appearance: none;
+    }
+
+    .button-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      width: min(100%, 800px);
+      margin: 0 auto;
+      padding: 2rem 0;
+      border-top: 2px solid var(--main-color);
+    }
+
+    button, .link-button {
+      background: #002200;
+      color: var(--main-color);
+      border: 1px solid var(--main-color);
+      padding: 0.8rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: var(--text-size);
+      width: 100%;
+      min-height: 50px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    button:hover, .link-button:hover {
+      background: var(--main-color);
+      color: var(--bg-color);
+      box-shadow: 0 0 15px var(--main-color);
+    }
+
+    .hacker-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #001100;
+      border: 2px solid #0f0;
+      padding: 2rem;
+      z-index: 1000;
+      max-width: 90%;
+      text-align: center;
+      box-shadow: 0 0 20px #0f0;
+    }
+
+    .hacker-modal h3 {
+      color: #0f0;
+      margin-bottom: 1rem;
+    }
+
+    .modal-code {
+      font-size: 2rem;
+      letter-spacing: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .modal-button {
+      background: #002200;
+      color: #0f0;
+      border: 1px solid #0f0;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .modal-button:hover {
+      background: #0f0;
+      color: #000;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 999;
+    }
+
+    .copy-icon {
+      cursor: pointer;
+      margin-left: 1rem;
+      filter: invert(60%) sepia(90%) saturate(300%) hue-rotate(50deg);
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="hacker-text" id="mainHeader">WELCOME TO RÅÑSØMÊ BOT WEB</h1>
+  <h2 class="glitch-text">RÅÑẞSØMË</h2>
+
+  <select class="hacker-select">
+    <option value="">SELECT OPTION</option>
+    <option value="pair">PAIR</option>
+    <option value="repo">REPOSITORY</option>
+    <option value="github">GITHUB</option>
+    <option value="contact">CONTACT</option>
+  </select>
+
+  <div class="button-container">
+    <a href="https://youtube.com/@jjtrillytrillionz8040?si=q057k99Aodi9QCBc" 
+       target="_blank" 
+       class="link-button">
+      SUBSCRIBE
+    </a>
+    <a href="https://wa.me/2348055279907" 
+       target="_blank" 
+       class="link-button">
+      WHATSAPP
+    </a>
+    <a href="https://x.com/TrillyJj47488?t=ohCgehxiOl2lUSmVNSFq6Q&s=09" 
+       target="_blank" 
+       class="link-button">
+      TWEET
+    </a>
+    <a href="https://github.com/Luffy-lang" 
+       target="_blank" 
+       class="link-button">
+      GITHUB
+    </a>
+  </div>
+
+  <div id="modal" class="hacker-modal" style="display: none;">
+    <h3 id="modal-title">[ SYSTEM ALERT ]</h3>
+    <div id="modal-content"></div>
+    <div class="modal-buttons">
+      <button class="modal-button" onclick="closeModal()">ACKNOWLEDGE</button>
+    </div>
+  </div>
+
+  <div id="overlay" class="overlay" style="display: none;"></div>
+
+<script>
+// Hacker Text Effect
+const header = document.getElementById('mainHeader');
+const originalText = "WELCOME TO RÅÑSØMÊ BOT WEB";
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÅÑØÊẞ0123456789@#$%^&*';
+
+function hackerEffect() {
+  let iterations = 0;
+  const interval = setInterval(() => {
+    header.textContent = originalText
+      .split('')
+      .map((char, index) => {
+        return index < iterations 
+          ? originalText[index] 
+          : chars[Math.floor(Math.random() * chars.length)]
+      })
+      .join('');
+
+    if(iterations >= originalText.length) clearInterval(interval);
+    iterations += 0.3;
+  }, 50);
+}
+
+// Pairing System
+let activeCodes = JSON.parse(localStorage.getItem('pairingCodes')) || [];
+
+function showModal(title, content) {
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-content').innerHTML = content;
+  document.getElementById('modal').style.display = 'block';
+  document.getElementById('overlay').style.display = 'block';
+}
+
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+  document.getElementById('overlay').style.display = 'none';
+}
+
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    showModal('[ SYSTEM ]', 'Code copied to clipboard!');
+  }).catch(err => {
+    showModal('[ ERROR ]', 'Failed to copy code!');
+  });
+}
+
+function generateCode(userNumber) {
+  const code = Math.floor(100000 + Math.random() * 900000);
+  const expiresAt = Date.now() + 600000;
+  
+  activeCodes.push({
+    number: userNumber,
+    code: code,
+    expiresAt: expiresAt,
+    used: false
+  });
+  
+  localStorage.setItem('pairingCodes', JSON.stringify(activeCodes));
+  
+  const modalContent = `
+    <div class="modal-code">${code}</div>
+    <div>⌛ Expires in: <span id="countdown">10:00</span></div>
+    <button class="modal-button" onclick="copyToClipboard('${code}')">
+      COPY CODE <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAsQAAALEBxi1JjQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAADLSURBVDiNpZIxCsJAEETnNhEUsSxSWIuFhZ+wn52NnZ0fsLISK0uxsBQrIRjUQDAkK4eXgAou7LKwM+/NzM5DRAyADnAB9sA1zQ/AgpQ0i4hCkQjgDByBHvAEdkAnIkq5iCgV1iJQp9cHZsBd0lVSS1I9T0DSFpgBJeABjIHkH6AP9IHkF3CS1JBUV4QqMAJqwB1YAVtJz5xwA1bADXgBk9QhF0XgDLyBd5r/AD0Z2yYJ4F7uAAAAAElFTkSuQmCC" class="copy-icon" width="15">
+    </button>
+  `;
+  
+  showModal('[ PAIRING CODE ]', modalContent);
+  
+  let seconds = 600;
+  const countdown = setInterval(() => {
+    seconds--;
+    document.getElementById('countdown').textContent = 
+      `${Math.floor(seconds/60)}:${(seconds%60).toString().padStart(2, '0')}`;
+    
+    if(seconds <= 0) {
+      clearInterval(countdown);
+      activeCodes = activeCodes.filter(c => c.code !== code);
+      localStorage.setItem('pairingCodes', JSON.stringify(activeCodes));
+      closeModal();
+    }
+  }, 1000);
+}
+
+document.querySelector('.hacker-select').addEventListener('change', function(e) {
+  const yourNumber = '2348055279907';
+  
+  switch(this.value) {
+    case 'pair':
+      const userNumber = prompt('ENTER WHATSAPP NUMBER:\n(Without +, e.g. 2348055279907)');
+      if(!userNumber) break;
+      
+      if(!/^234\d{10}$/.test(userNumber)) {
+        showModal('[ ERROR ]', '❌ Invalid Nigerian number format!\nUse 234 followed by 10 digits\nExample: 2348055279907');
+        break;
+      }
+      
+      generateCode(userNumber);
+      
+      window.open(
+        `https://wa.me/${yourNumber}?text=NEW_PAIR_REQUEST:%0A%0A📱 Number: ${userNumber}%0A🔒 Code: ${activeCodes[activeCodes.length-1].code}%0A⏳ Expires: 10 minutes`,
+        '_blank'
+      );
+      break;
+
+    case 'github':
+      window.open('https://github.com/Luffy-lang', '_blank');
+      break;
+
+    case 'contact':
+      window.open(`https://wa.me/${yourNumber}`, '_blank');
+      break;
+  }
+  this.value = '';
+});
+
+// Initialize
+activeCodes = activeCodes.filter(c => c.expiresAt > Date.now());
+localStorage.setItem('pairingCodes', JSON.stringify(activeCodes));
+hackerEffect();
+setInterval(hackerEffect, 10000);
+</script>
+</body>
+</html>
